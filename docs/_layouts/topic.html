@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{page.name}}</title>
+  </head>
+  <body>
+    <h1>{{page.name}}</h1>
+    <h3>{{page.title}}</h3>
+
+    <h4>Arguments</h4>
+    <ul>
+        {% for arg in page.arguments %}
+          <li>
+            <b>{{arg.name}}</b>
+          </li>
+          {{arg.description}}
+        {% endfor %}
+    </ul>
+
+    {{content}}
+
+  </body>
+</html>

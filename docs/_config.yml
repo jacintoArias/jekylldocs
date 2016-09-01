@@ -15,3 +15,10 @@ theme: minima
 collections:
   topics:
     output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: topics
+    values:
+      layout: topic
