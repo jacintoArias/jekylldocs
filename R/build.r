@@ -1,3 +1,49 @@
+#' Build jekyll collection for your documentation
+#' @export
+#' }
+build_jekyll <- function(pkg = ".",
+                       site_path = "docs/_topics/",
+                       examples = TRUE,
+                       run_dont_run = FALSE,
+                       templates_path = "inst/templates/jekyll",
+                       bootstrap_path = "inst/staticdocs/bootstrap",
+                       mathjax = TRUE,
+                       with_vignettes = TRUE,
+                       with_demos = TRUE,
+                       launch = interactive(),
+                       seed = 1014
+) {
+  
+  set.seed(seed)
+  
+  pkg <- as.sd_package(
+    pkg,
+    site_path = site_path,
+    examples = examples,
+    run_dont_run = run_dont_run,
+    templates_path = templates_path,
+    bootstrap_path = bootstrap_path,
+    mathjax = mathjax
+  )
+  load_all(pkg)
+  
+  if (!file.exists(pkg$site_path)) {
+    dir.create(pkg$site_path, recursive = TRUE)
+  }
+  # copy_bootstrap(pkg)
+  
+  
+  pkg$topics <- build_topics(pkg)
+#   if (with_vignettes) pkg$vignettes <- build_vignettes(pkg)
+#   if (with_demos) pkg$demos <- build_demos(pkg)
+#   
+#   build_index(pkg)
+#   build_reference(pkg)
+#   
+#   if (launch) launch(pkg)
+  invisible(TRUE)
+}
+
 #' Build complete static documentation for a package.
 #'
 #' Currently, \code{build_site} builds documentation for help topics,
