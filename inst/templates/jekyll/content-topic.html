@@ -1,6 +1,13 @@
 ---
 title: {{{title}}}
 name: {{{name}}}
+{{#has_args}}
+arguments:
+{{#arguments}}
+  - name: {{name}}
+  - description: "{{{description}}}"
+{{/arguments}}
+{{/has_args}}
 ---
 
 <div class="row">
