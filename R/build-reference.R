@@ -1,3 +1,41 @@
+
+
+# Must be called after all other build functions.
+build_reference_data <- function(pkg) {
+  out <- file.path(pkg$site_path, "reference.yml")
+  message("Generating reference.yml")
+  
+  index <- pkg$index
+  topic_index <- pkg$topics[pkg$topics$in_index, , drop = FALSE]
+  pkg$topic_index <- rows_list(topic_index)
+  
+  # Cross-reference complete list of topics vs. topics found in index page
+  topics <- unlist(lapply(index, "[[", "topics"))
+  missing <- !(topics %in% topic_index$name)
+  if (any(missing)) {
+    warning("Can't find index topics: ", paste(topics[missing],
+                                               collapse = ", "), call. = FALSE)
+    topics <- topics[!missing]
+  }
+  
+  other <- !(topic_index$name %in% topics)
+  if (any(other)) {
+    title <- if(length(topics)) 'Other' else ''
+    index <-
+      c(index, list(sd_section(title, NULL, sort(topic_index$name[other]))))
+  }
+  
+  # Render each section
+  sections <- lapply(index, build_section, pkg = pkg)
+  pkg$sections <- sections
+  pkg$rd <- NULL
+  
+  render_icons(pkg)
+  pkg$pagetitle <- "Function reference"
+  render_page(pkg, "index", pkg, out)
+}
+
+
 # Must be called after all other build functions.
 build_reference <- function(pkg) {
   out <- file.path(pkg$site_path, "reference.html")
