@@ -37,7 +37,7 @@ build_jekyll <- function(pkg = ".",
   if (!file.exists(pkg$site_path)) {
     dir.create(pkg$site_path, recursive = TRUE)
   }
-  build_reference(pkg)
+  build_reference_data(pkg)
   #   if (with_vignettes) pkg$vignettes <- build_vignettes(pkg)
   #   if (with_demos) pkg$demos <- build_demos(pkg)
   #   
