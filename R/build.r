@@ -2,16 +2,16 @@
 #' @export
 #' }
 build_jekyll <- function(pkg = ".",
-                       site_path = "docs/_topics/",
-                       examples = TRUE,
-                       run_dont_run = FALSE,
-                       templates_path = "inst/templates/jekyll",
-                       bootstrap_path = "inst/staticdocs/bootstrap",
-                       mathjax = TRUE,
-                       with_vignettes = TRUE,
-                       with_demos = TRUE,
-                       launch = interactive(),
-                       seed = 1014
+                         site_path = "docs/",
+                         examples = TRUE,
+                         run_dont_run = FALSE,
+                         templates_path = "inst/templates/jekyll",
+                         bootstrap_path = "inst/staticdocs/bootstrap",
+                         mathjax = TRUE,
+                         with_vignettes = TRUE,
+                         with_demos = TRUE,
+                         launch = interactive(),
+                         seed = 1014
 ) {
   
   set.seed(seed)
@@ -27,20 +27,24 @@ build_jekyll <- function(pkg = ".",
   )
   load_all(pkg)
   
+  pkg$site_path = paste0(site_path, "_topics/")
   if (!file.exists(pkg$site_path)) {
     dir.create(pkg$site_path, recursive = TRUE)
   }
-  # copy_bootstrap(pkg)
-  
-  
   pkg$topics <- build_topics(pkg)
-#   if (with_vignettes) pkg$vignettes <- build_vignettes(pkg)
-#   if (with_demos) pkg$demos <- build_demos(pkg)
-#   
-#   build_index(pkg)
-#   build_reference(pkg)
-#   
-#   if (launch) launch(pkg)
+  
+  pkg$site_path = paste0(site_path, "_data/")
+  if (!file.exists(pkg$site_path)) {
+    dir.create(pkg$site_path, recursive = TRUE)
+  }
+  build_reference(pkg)
+  #   if (with_vignettes) pkg$vignettes <- build_vignettes(pkg)
+  #   if (with_demos) pkg$demos <- build_demos(pkg)
+  #   
+  #   build_index(pkg)
+  #   build_reference(pkg)
+  #   
+  #   if (launch) launch(pkg)
   invisible(TRUE)
 }
 
