@@ -20,7 +20,7 @@ title: Reference
       <ul class="index">
         {% for item in section.items %}
           {% assign topic = site.topics | where:"name", item.name  | first %}
-          <li><a href="{{topic.url}}">{{topic.name}}</a><br />{{topic.title}}</li>
+          <li><a href="{{ site.github.url }}/{{topic.url}}">{{topic.name}}</a><br />{{topic.title}}</li>
         {%endfor%}
       </ul>
 
