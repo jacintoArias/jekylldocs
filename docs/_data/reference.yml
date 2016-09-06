@@ -1,0 +1,31 @@
+- title: Settings functions
+  description: "<p>These functions are used in <code>index.r</code> to configure various
+    settings that staticdocs uses when rendering a package.  This is
+    particularly useful for generating an index page that groups functions
+    into useful categories</p>
+"
+  items:
+    - name: sd_icon
+      title: "Define the icon for a function."
+      aliases: ""
+    - name: sd_item
+      title: "Define an item in a section of the index."
+      aliases: ""
+    - name: sd_section
+      title: "Define a section for the index page"
+      aliases: ""
+- title: Other
+  description: ""
+  items:
+    - name: build_site
+      title: "Build complete static documentation for a package."
+      aliases: "(build_package, staticdocs-package)"
+    - name: parse_rd
+      title: "Parse an rd file in to staticdocs format."
+      aliases: ""
+    - name: render_page
+      title: "Render complete page."
+      aliases: ""
+    - name: to_html
+      title: "Convert an rdoc to a list of html components."
+      aliases: ""
