@@ -1,6 +1,6 @@
 # jekylldocs
 
-A variant of the original [staticdocs](ttp://hadley.github.io/staticdocs/) package by Hadley Wickham
+A variant of the original [staticdocs](http://hadley.github.io/staticdocs/) package by Hadley Wickham
 
 This package is meant to generate the documentation content of the original package as a jekyll collection in your /docs folder.
 
