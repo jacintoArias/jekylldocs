@@ -1,3 +1,13 @@
+build_index_data <- function(pkg) {
+  out <- file.path(pkg$site_path, "index.yml")
+  message("Generating index.yml")
+  
+  pkg$readme <- readme(pkg)
+  pkg$pagetitle <- "Home"
+  
+  render_page(pkg, "readme", pkg, out)
+}
+
 build_index <- function(pkg) {
   out <- file.path(pkg$site_path, "index.html")
   message("Generating index.html")
