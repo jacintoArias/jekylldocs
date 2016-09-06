@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{page.name}}</title>
-  </head>
-  <body>
-    <h1>{{page.name}}</h1>
-    <h3>{{page.title}}</h3>
+---
+layout: default
+title: page.name
+---
 
-    {{content}}
+<h1>{{page.name}}</h1>
+<h3>{{page.title}}</h3>
 
-  </body>
-</html>
+{{content}}

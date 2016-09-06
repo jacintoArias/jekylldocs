@@ -1,29 +1,13 @@
 ---
 layout: default
+title: Home
 ---
 
 <div class="container">
 <div class="row">
   <div class="col-md-8 span-4">
 
-    <h2>Function reference</h2>
-
-    {% for section in site.data.reference %}
-
-    <h3>{{section.title}}</h3>
-
-    <p>
-      {{section.description}}
-    </p>
-
-      <ul class="index">
-        {% for item in section.items %}
-          {% assign topic = site.topics | where:"name", item.name  | first %}
-          <li><a href="{{topic.url}}">{{topic.name}}</a><br />{{topic.title}}</li>
-        {%endfor%}
-      </ul>
-
-    {%endfor%}
+    {{site.data.index[0].readme}}
   </div>
 </div>
 
