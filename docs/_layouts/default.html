@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>My basic repo</title>
+    {% include head.html %}
   </head>
+
   <body>
-    {{content}}
+    {% include navbar.html %}
+
+    <div class="container">
+      <header>
+      {% include header.html %}
+      </header>
+
+      {{ content }}
+
+      <footer>
+      {% include footer.html %}
+      </footer>
+    </div>
+    
   </body>
 </html>

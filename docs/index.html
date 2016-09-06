@@ -2,16 +2,30 @@
 layout: default
 ---
 
-<div>
-<h1>Hello Jekyll</h1>
+<div class="container">
+<div class="row">
+  <div class="col-md-8 span-4">
 
-<h3>List of topics</h3>
+    <h2>Function reference</h2>
 
-<ul>
-  {% for topic in site.topics %}
-    <li><a href="{{topic.url}}">{{topic.name}}</a></li>
-  {% endfor %}
-</ul>
+    {% for section in site.data.reference %}
 
+    <h3>{{section.title}}</h3>
 
+    <p>
+      {{section.description}}
+    </p>
+
+      <ul class="index">
+        {% for item in section.items %}
+          {% assign topic = site.topics | where:"name", item.name  | first %}
+          <li><a href="{{topic.url}}">{{topic.name}}</a><br />{{topic.title}}</li>
+        {%endfor%}
+      </ul>
+
+    {%endfor%}
+  </div>
+</div>
+
+<br><br>
 </div>
